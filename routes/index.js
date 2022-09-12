@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/api/test', function(req,res, next){
   Posts.findById("631fb302c065ac636b9c5f95", (err, data)=>{
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "https://batfe.herokuapp.com");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.send("HAH! GOTEM!")
     
