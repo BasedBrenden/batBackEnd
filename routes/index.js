@@ -13,7 +13,7 @@ router.get('/', async(req,res, next) =>{
   const currentPosts = await Posts.findById("62e965869ada8f801e5443ea", (err, data)=>{
     if(err) {return console.error(err)}
   }).clone()
-  res.send("hello")
+  res.send(index, {title:"hello"})
 
 })
 
