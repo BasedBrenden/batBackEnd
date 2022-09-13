@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index');
 
 var app = express();
 
+const cors = require('cors');
+
 const mongoose = require('mongoose');
 
 const mongoDB ='mongodb+srv://bthomas:bthomas@cluster0.nkamwxm.mongodb.net/?retryWrites=true&w=majority';
@@ -27,6 +29,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
