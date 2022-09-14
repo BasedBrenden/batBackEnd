@@ -22,10 +22,10 @@ router.get('/', async(req,res, next) =>{
 
 /* PUT a new pokemon into the roster*/
 
-router.post('/api/put', (req,res)=>{
+router.post('/apir', (req,res)=>{
 
   UserData.findById("631fb302c065ac636b9c5f95", (err, data)=>{
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     if(err) {return console.error(err)}
     const testReq = req.body.newPokemon;
