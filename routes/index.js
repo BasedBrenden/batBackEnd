@@ -24,7 +24,7 @@ router.get('/', async(req,res, next) =>{
 router.post('/apir', (req,res, next)=>{
 
   UserData.findById("631fb302c065ac636b9c5f95", (err, data)=>{
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "https://batfe.herokuapp.com/");
     res.statusCode = 200;
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     if(err) {return console.error(err)}
