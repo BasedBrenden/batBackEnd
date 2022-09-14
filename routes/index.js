@@ -3,11 +3,13 @@ var mongoDB = 'mongodb+srv://bthomas:bthomas@cluster0.nkamwxm.mongodb.net/?retry
 var mongoose = require('mongoose');
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 ;
+var cors = require('cors')
 
 
 
 const UserData = require('../models/documentSchema')
 var router = express.Router();
+router.use(cors());
 
 /* GET home page. */
 
