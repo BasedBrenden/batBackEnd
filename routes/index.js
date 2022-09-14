@@ -3,7 +3,7 @@ var mongoDB = 'mongodb+srv://bthomas:bthomas@cluster0.nkamwxm.mongodb.net/?retry
 var mongoose = require('mongoose');
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 const cors = require('cors');
-const testApp = express();
+var testApp = express();
 testApp.use(cors());
 
 
