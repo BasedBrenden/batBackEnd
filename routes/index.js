@@ -12,7 +12,7 @@ var router = express.Router();
 router.get('/', async(req,res, next) =>{
   const currentPosts = await UserData.findById("631fb302c065ac636b9c5f95", (err, data)=>{
     if(err) {return console.error(err)}
-  })
+  }).clone();
   res.json(currentPosts)
   
 
