@@ -31,7 +31,11 @@ router.post('/apir', (req,res, next)=>{
     if(err) {return console.error(err)}
     const testReq = req.body.newPokemon;
     data.Team.push(testReq)
+    data.save((err, updateD)=>{
+      if(err) console.error(err)
+    })
   })
+  res.send();
 
 })
 
