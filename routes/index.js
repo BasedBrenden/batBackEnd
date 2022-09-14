@@ -3,13 +3,13 @@ var mongoDB = 'mongodb+srv://bthomas:bthomas@cluster0.nkamwxm.mongodb.net/?retry
 var mongoose = require('mongoose');
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 ;
-var cors = require('cors')
+
 
 
 
 const UserData = require('../models/documentSchema')
 var router = express.Router();
-router.use(cors());
+
 
 /* GET home page. */
 
@@ -25,9 +25,9 @@ router.get('/', async(req,res, next) =>{
 /* PUT a new pokemon into the roster*/
 
 router.post('/apir', (req,res, next)=>{
-  UserData.findById("631fb302c065ac636b9c5f95", (err, data)=>{
-    res.setHeader("Access-Control-Allow-Origin", '*');
+  res.setHeader("Access-Control-Allow-Origin", '*');
     res.setHeader("Access-Control-Allow-Headers", 'Origin, X-Requested-With, Content-Type, Accept');
+  UserData.findById("631fb302c065ac636b9c5f95", (err, data)=>{
     if(err) {return console.error(err)}
     const testReq = req.body.newPokemon;
     data.Team.push(testReq)
