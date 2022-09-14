@@ -2,7 +2,9 @@ var express = require('express');
 var mongoDB = 'mongodb+srv://bthomas:bthomas@cluster0.nkamwxm.mongodb.net/?retryWrites=true&w=majority'
 var mongoose = require('mongoose');
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
-
+const cors = require('cors');
+const testApp = express();
+testApp.use(cors());
 
 
 const UserData = require('../models/documentSchema')
@@ -21,12 +23,11 @@ router.get('/', async(req,res, next) =>{
 
 /* PUT a new pokemon into the roster*/
 
-router.post('/apir', (req,res, next)=>{
-
+testApp.post('/apir', (req,res, next)=>{
+  res.setHeader
   UserData.findById("631fb302c065ac636b9c5f95", (err, data)=>{
-    //res.header("Access-Control-Allow-Origin: https://batfe.herokuapp.com/");
-    //res.statusCode = 200;
-    //res.header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Origin", 'https://batfe.herokuapp.com/');
+    res.header("Access-Control-Allow-Headers", 'Origin, X-Requested-With, Content-Type, Accept');
     if(err) {return console.error(err)}
     const testReq = req.body.newPokemon;
     data.Team.push(testReq)
