@@ -25,17 +25,24 @@ router.get('/', async(req,res, next) =>{
 /* PUT a new pokemon into the roster*/
 
 router.post('/apir', (req,res, next)=>{
-  res.setHeader("Access-Control-Allow-Origin", '*');
-    res.setHeader("Access-Control-Allow-Headers", 'Origin, X-Requested-With, Content-Type, Accept');
+  /*res.setHeader("Access-Control-Allow-Origin", '*');
+  res.setHeader("Access-Control-Allow-Headers", 'Origin, X-Requested-With, Content-Type, Accept');
+  */
   UserData.findById("631fb302c065ac636b9c5f95", (err, data)=>{
     if(err) {return console.error(err)}
-    const testReq = req.body.newPokemon;
-    data.Team.push(testReq)
+    const newPokemonInfo ={
+      pokeName: req.body.pokeName,
+      pokeID: req.body.pokeID,
+      pokeImage: req.body.pokeImage,
+  }
+    data.Team.push(newPokemonInfo)
     data.save((err, updateD)=>{
       if(err) console.error(err)
     })
+
+    res.send();
   })
-  res.send();
+  
 
 })
 
