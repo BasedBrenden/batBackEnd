@@ -31,10 +31,10 @@ router.post('/apir', (req,res, next)=>{
   UserData.findById("631fb302c065ac636b9c5f95", (err, data)=>{
     if(err) {return console.error(err)}
     const newPokemonInfo ={
-      pokename: req.body.pokeName,
       pokeID: req.body.pokeID,
       pokeImage: req.body.pokeImage,
-  }
+      pokeName: req.body.pokeName
+    }
     data.Team.push(newPokemonInfo)
     data.save((err, updateD)=>{
       if(err) console.error(err)
