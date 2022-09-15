@@ -42,10 +42,10 @@ router.post('/apir', (req,res, next)=>{
       if(err) console.error(err)
     })
 
-    res.send();
+    
   })
   
-
+  res.send();
 })
 
 module.exports = router;
