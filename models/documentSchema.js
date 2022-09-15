@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const PokemonSchema = new Schema({
     pokeID: {type: Number},
     pokeImage: {type: String},
-    PokeName: {type: String}           
+    pokeName: {type: String}           
 })
 
 const UserSettingsSchema = new Schema({
