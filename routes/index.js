@@ -69,7 +69,7 @@ router.post('/apir/delete', (req,res)=>{
     
   })
   */
-
+  res.send();
   
 
 })
