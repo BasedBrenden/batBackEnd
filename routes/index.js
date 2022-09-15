@@ -52,9 +52,7 @@ router.post('/apir/delete', (req,res)=>{
 
   UserData.findOneAndUpdate({_id: "631fb302c065ac636b9c5f95"}, {$pull:{ Team:{pokeID:req.body.id}}}, (err, removedIndex)=>{
     if(err)return console.log(err);
-    else{
-      res.redirect('/');
-    }
+
   })
 
   /*UserData.findById("631fb302c065ac636b9c5f95", (err, data)=>{
@@ -72,7 +70,6 @@ router.post('/apir/delete', (req,res)=>{
   })
   */
 
-  res.send();
   
 
 })
