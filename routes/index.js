@@ -56,7 +56,7 @@ router.post('/apir/delete', (req,res)=>{
 
   
     //remove from data, then save updated version to mongoDB
-    data.pull({Team:{pokeID: req.body.id}})
+    data.pull({Team:{pokeID: req.body}})
     data.save((err, updateD)=>{
       if(err) console.error(err)
     })
