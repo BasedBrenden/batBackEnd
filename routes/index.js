@@ -50,19 +50,24 @@ router.post('/apir', (req,res, next)=>{
 
 router.post('/apir/delete', (req,res)=>{
 
-  UserData.findById("631fb302c065ac636b9c5f95", (err, data)=>{
+  UserData.findOneAndUpdate({_id: "631fb302c065ac636b9c5f95"}, {$pull:{ Team:{pokeID:req.body}}}, (err, removedIndex)=>{
+    if(err)return console.log(err);
+  })
+
+  /*UserData.findById("631fb302c065ac636b9c5f95", (err, data)=>{
     if(err) {return console.error(err)}
 
 
   
     //remove from data, then save updated version to mongoDB
-    data.pull({Team:{pokeID: req.body}})
+    //data.pull({Team:{pokeID: req.body}})
     data.save((err, updateD)=>{
       if(err) console.error(err)
     })
 
     
   })
+  */
 
   res.send();
   
