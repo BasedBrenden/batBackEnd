@@ -52,9 +52,11 @@ router.post('/apir/delete', (req,res)=>{
 
   UserData.findById("631fb302c065ac636b9c5f95", (err, data)=>{
     if(err) {return console.error(err)}
+
+
   
     //remove from data, then save updated version to mongoDB
-    data.Team.pull({pokeID: req.body.id})
+    data.pull({Team:{pokeID: req.body.id}})
     data.save((err, updateD)=>{
       if(err) console.error(err)
     })
