@@ -1,14 +1,50 @@
 var express = require('express');
 var mongoDB = 'mongodb+srv://bthomas:bthomas@cluster0.nkamwxm.mongodb.net/?retryWrites=true&w=majority'
 var mongoose = require('mongoose');
+const app = require('../app');
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
-;
-
-
-
-
 const UserData = require('../models/documentSchema')
 var router = express.Router();
+
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+
+passport.use(
+  new LocalStrategy((username, password, done) => {
+    UserData.findOne({ username: username }, (err, user) => {
+      if (err) { 
+        return done(err);
+      }
+      if (!user) {
+        return done(null, false, { message: "Incorrect username" });
+      }
+      if (user.password !== password) {
+        return done(null, false, { message: "Incorrect password" });
+      }
+      return done(null, user);
+    });
+  })
+);
+
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  UserData.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
+router.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+router.use(passport.initialize());
+router.use(passport.session());
+router.use(express.urlencoded({ extended: false }));
+
+
+
+
 
 
 /* GET home page. */
@@ -18,11 +54,26 @@ router.get('/', async(req,res, next) =>{
     if(err) {return console.error(err)}
   }).clone();
   res.json(currentPosts)
-  
 
 })
 
-/* PUT a new pokemon into the roster*/
+
+/* Post user sign-up/account creation*/
+router.post("/sign-up", (req,res,next)=>{
+  const user = new UserData({
+    username:req.body.username,
+    password: req.body.password
+  }).save(err =>{
+    if (err) {
+      return next(err);
+    }
+  })
+  res.send("Account Created!");
+})
+
+
+
+/* Post a new pokemon into the roster*/
 
 router.post('/apir', (req,res, next)=>{
   const newPokemonInfo ={
