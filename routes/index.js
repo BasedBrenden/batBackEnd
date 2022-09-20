@@ -60,10 +60,15 @@ router.get('/', async(req,res, next) =>{
 
 /* Post user sign-up/account creation*/
 router.post("/sign-up", (req,res,next)=>{
-  let user = new UserData();
-  
-  user.Username = req.body.username;
-  user.Password = req.body.password;
+  let user = new UserData({
+    Settings: {
+      DarkMode: true,
+      Username: req.body.username,
+      Password: req.body.password
+    }
+  });
+ 
+
 
   user.save(err =>{
     if (err) {
