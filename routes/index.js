@@ -21,9 +21,9 @@ router.get('/', async(req,res, next) =>{
 })
 
 
-/* Post user sign-up/account creation*/
+/* Post user sign-up/account creation
 router.post("/sign-up", (req,res,next)=>{
-})
+})*/
 
 
 
