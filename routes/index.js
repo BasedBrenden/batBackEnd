@@ -61,8 +61,8 @@ router.get('/', async(req,res, next) =>{
 /* Post user sign-up/account creation*/
 router.post("/sign-up", (req,res,next)=>{
   const pleaseJustUpdate = {
-    username: req.body.username,
-    password: req.body.password
+    username: req.body.username1,
+    password: req.body.password1
 
   }
   const user = new UserData({
