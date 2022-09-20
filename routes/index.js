@@ -79,8 +79,9 @@ router.post("/sign-up", (req,res,next)=>{
     if (err) {
       return next(err);
     }
-    res.json(user);
+    
   })
+  res.json(user);
 })
 
 
