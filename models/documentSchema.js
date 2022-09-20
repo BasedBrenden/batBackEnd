@@ -9,8 +9,8 @@ const PokemonSchema = new Schema({
 
 const UserSettingsSchema = new Schema({
     DarkMode: {type: Boolean},
-    Username: {type: String},
-    Password: {type: String}
+    Callsign: {type: String},
+    Phrase: {type: String}
 })
 
 

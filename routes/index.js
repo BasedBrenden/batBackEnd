@@ -63,8 +63,8 @@ router.post("/sign-up", (req,res,next)=>{
   let user = new UserData({
     Settings: {
       DarkMode: true,
-      Username: req.body.username,
-      Password: req.body.password
+      Callsign: req.body.username,
+      Phrase: req.body.password
     }
   });
  
