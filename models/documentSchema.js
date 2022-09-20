@@ -12,8 +12,8 @@ const UserSettingsSchema = new Schema({
 })
 
 const UserSchema = new Schema({
-    Username: {type: String},
-    Password: {type: String},
+    Username: {type: String, required:true},
+    Password: {type: String, required:true},
     Team: [PokemonSchema],
     Settings: [UserSettingsSchema]
 
