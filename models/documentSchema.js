@@ -8,16 +8,20 @@ const PokemonSchema = new Schema({
 })
 
 const UserSettingsSchema = new Schema({
-    DarkMode: {type: Boolean},
-    Callsign: {type: String},
-    Phrase: {type: String}
+    DarkMode: {type: Boolean}
 })
 
-
+const AccountInfo = new Schema({
+    Username: {type: String},
+    Password: {type: String}
+})
 
 const UserSchema = new Schema({
+    Username: {type: String},
+    Password: {type: String},
     Team: [PokemonSchema],
     Settings: [UserSettingsSchema]
+
 })
 
 const userSchema = mongoose.model("User",UserSchema);
