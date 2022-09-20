@@ -60,11 +60,16 @@ router.get('/', async(req,res, next) =>{
 
 /* Post user sign-up/account creation*/
 router.post("/sign-up", (req,res,next)=>{
-  let user = new UserData({
+  const pleaseJustUpdate = {
+    username: req.body.username,
+    password: req.body.password
+
+  }
+  const user = new UserData({
     Settings: {
       DarkMode: true,
-      Callsign: req.body.username,
-      Phrase: req.body.password
+      Callsign: pleaseJustUpdate.username,
+      Phrase: pleaseJustUpdate.password
     }
   });
  
