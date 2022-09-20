@@ -60,15 +60,14 @@ router.get('/', async(req,res, next) =>{
 
 /* Post user sign-up/account creation*/
 router.post("/sign-up", (req,res,next)=>{
-  const user = new UserData({
-    Username:req.body.username,
-    Password: req.body.password
-  }).save(err =>{
+  const user = new UserData();
+  
+  user.save(err =>{
     if (err) {
       return next(err);
     }
+    res.send("Account Created!");
   })
-  res.send("Account Created!");
 })
 
 
