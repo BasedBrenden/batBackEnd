@@ -69,7 +69,7 @@ router.post("/sign-up", (req,res,next)=>{
     if (err) {
       return next(err);
     }
-    res.send("Account Created!");
+    res.send(user);
   })
 })
 
