@@ -50,13 +50,15 @@ router.post('/addPoke', (req,res, next)=>{
     pokeName: req.body.pokeName
   }
 
-  const aTest = UserData.find({Username: req.body.Username}, (err, data)=>{
+  UserData.find({Username: req.body.Username}, (err, data)=>{
     if(err) {return console.error(err)}
     data.Team.push(newPokemonInfo)
     data.save((err, updateD)=>{
       if(err) console.error(err)
     })
   }).clone();
+  res.send();
+
 })
 
 /* Post: delete specific pokemon from team
