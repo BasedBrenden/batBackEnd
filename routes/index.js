@@ -16,7 +16,7 @@ router.get('/', async(req,res, next) =>{
 })
 
 
-router.post('/eeee', async(req,res, next) =>{
+router.post('/getTeam', async(req,res, next) =>{
 
   const username = req.body.userId
   const currentPostsaaa = await UserData.find({Username: username}, (err, data)=>{
@@ -56,7 +56,7 @@ router.post('/addPoke', async (req,res, next)=>{
     data.save((err, updateD)=>{
       if(err) console.error(err)
     })
-  });
+  }).clone();
   res.send();
 
 })
