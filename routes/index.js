@@ -43,25 +43,20 @@ router.post("/sign-up", (req,res,next)=>{
 
 /* Post a new pokemon into the roster*/
 
-router.post('/apir', (req,res, next)=>{
+router.post('/addPoke', (req,res, next)=>{
   const newPokemonInfo ={
     pokeID: req.body.pokeID,
     pokeImage: req.body.pokeImage,
     pokeName: req.body.pokeName
   }
-  
-  UserData.findById("631fb302c065ac636b9c5f95", (err, data)=>{
+
+  UserData.find({Username: req.body.Username}, (err, data)=>{
     if(err) {return console.error(err)}
-  
     data.Team.push(newPokemonInfo)
     data.save((err, updateD)=>{
       if(err) console.error(err)
     })
-
-    
-  })
-  
-  res.send();
+  }).clone();
 })
 
 /* Post: delete specific pokemon from team
