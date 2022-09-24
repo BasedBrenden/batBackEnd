@@ -16,7 +16,7 @@ router.get('/', async(req,res, next) =>{
 })
 
 
-router.get('/:userId', async(req,res, next) =>{
+router.get('/user/:userId', async(req,res, next) =>{
 
   const username = req.query.userId
   const currentPosts = await UserData.find({Username: username}, (err, data)=>{
