@@ -50,14 +50,10 @@ router.post('/addPoke', async (req,res, next)=>{
     pokeName: req.body.pokeName
   }
 
-  const outpuuuut = await UserData.find({Username: req.body.Username}, (err, data)=>{
+  UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Team: {newPokemonInfo}}}, (err, data)=>{
     if(err) {return console.error(err)}
-    data.Team.push(newPokemonInfo)
-    data.save((err, updateD)=>{
-      if(err) console.error(err)
-    })
-  }).clone();
-  res.send(outpuuuut);
+  })
+  res.send();
 
 })
 
