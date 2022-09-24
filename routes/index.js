@@ -20,7 +20,8 @@ router.post('/eeee', async(req,res, next) =>{
 
   const username = req.body.userId
   const currentPostsaaa = await UserData.find({Username: username})
-  res.json(currentPostsaaa)
+  const tryagain = await currentPostsaaa;
+  res.json(tryagain)
 
 })
 
