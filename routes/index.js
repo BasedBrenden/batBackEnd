@@ -19,9 +19,9 @@ router.get('/', async(req,res, next) =>{
 router.post('/eeee', async(req,res, next) =>{
 
   const username = req.body.userId
-  const currentPostsaaa = await UserData.find({Username: username})
-  const tryagain = await currentPostsaaa;
-  res.json(tryagain)
+  const currentPostsaaa = UserData.find({Username: username})
+
+  res.json(currentPostsaaa)
 
 })
 
