@@ -19,10 +19,8 @@ router.get('/', async(req,res, next) =>{
 router.post('/eeee', async(req,res, next) =>{
 
   const username = req.body.userId
-  const currentPosts = await UserData.find({Username: username}, (err, data)=>{
-    if(err) {return console.error(err)}
-  })
-  res.json(currentPosts)
+  const currentPostsaaa = await UserData.find({Username: username})
+  res.json(currentPostsaaa)
 
 })
 
