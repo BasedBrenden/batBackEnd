@@ -56,7 +56,7 @@ router.post('/addPoke', (req,res, next)=>{
     data.save((err, updateD)=>{
       if(err) console.error(err)
     })
-  }).clone();
+  });
   res.send();
 
 })
