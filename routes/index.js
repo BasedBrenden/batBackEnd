@@ -60,9 +60,9 @@ router.post('/addPoke', async (req,res, next)=>{
 /* Post: delete specific pokemon from team
 */
 
-router.post('/apir/delete', (req,res)=>{
+router.post('/deletePoke', (req,res)=>{
 
-  UserData.findOneAndUpdate({_id: "631fb302c065ac636b9c5f95"}, {$pull:{ Team:{pokeID:req.body.id}}}, (err, removedIndex)=>{
+  UserData.findOneAndUpdate({Username: req.body.Username}, {$pull:{ Team:{pokeID:req.body.id}}}, (err, removedIndex)=>{
     if(err)return console.log(err);
 
   })
