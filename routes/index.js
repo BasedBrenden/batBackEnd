@@ -16,9 +16,9 @@ router.get('/', async(req,res, next) =>{
 })
 
 
-router.get('/user/:userId', async(req,res, next) =>{
+router.post('/', async(req,res, next) =>{
 
-  const username = req.query.userId
+  const username = req.body.userId
   const currentPosts = await UserData.find({Username: username}, (err, data)=>{
     if(err) {return console.error(err)}
   }).clone();
