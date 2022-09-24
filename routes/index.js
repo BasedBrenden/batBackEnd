@@ -11,7 +11,7 @@ var router = express.Router();
 router.get('/:userId', async(req,res, next) =>{
 
   const username = req.query.userId
-  const currentPosts = await UserData.findById({username: username}, (err, data)=>{
+  const currentPosts = await UserData.findById({Username: username}, (err, data)=>{
     if(err) {return console.error(err)}
   }).clone();
   res.json(currentPosts)
