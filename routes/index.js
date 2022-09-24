@@ -50,7 +50,7 @@ router.post('/addPoke', (req,res, next)=>{
     pokeName: req.body.pokeName
   }
 
-  UserData.find({Username: req.body.Username}, (err, data)=>{
+  const aTest = UserData.find({Username: req.body.Username}, (err, data)=>{
     if(err) {return console.error(err)}
     data.Team.push(newPokemonInfo)
     data.save((err, updateD)=>{
