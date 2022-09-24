@@ -1,19 +1,17 @@
 var express = require('express');
 var mongoDB = 'mongodb+srv://bthomas:bthomas@cluster0.nkamwxm.mongodb.net/?retryWrites=true&w=majority'
 var mongoose = require('mongoose');
-const app = require('../app');
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 const UserData = require('../models/documentSchema')
 var router = express.Router();
 
 
-
-
-
 /* GET home page. */
 
-router.get('/', async(req,res, next) =>{
-  const currentPosts = await UserData.findById("631fb302c065ac636b9c5f95", (err, data)=>{
+router.get('/:userId', async(req,res, next) =>{
+
+  const username = req.query.userId
+  const currentPosts = await UserData.findById({username: username}, (err, data)=>{
     if(err) {return console.error(err)}
   }).clone();
   res.json(currentPosts)
@@ -25,7 +23,6 @@ router.get('/', async(req,res, next) =>{
 router.post("/sign-up", (req,res,next)=>{
   const user = new UserData({
     Username: req.body.username1,
-    Password: req.body.password1
   }).save(err=>{
     if(err){
       return next(err);
@@ -33,7 +30,14 @@ router.post("/sign-up", (req,res,next)=>{
   res.send("please?")
 })
 
+/*Post User log-in*/
 
+router.post("/log-in",passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/",
+  failureFlash: true 
+}),
+);
 
 /* Post a new pokemon into the roster*/
 

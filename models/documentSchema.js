@@ -18,7 +18,6 @@ const AccountInfo = new Schema({
 
 const UserSchema = new Schema({
     Username: {type: String},
-    Password: {type: String},
     Team: [PokemonSchema],
     Settings: [UserSettingsSchema]
 
