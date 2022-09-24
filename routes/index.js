@@ -19,7 +19,7 @@ router.get('/', async(req,res, next) =>{
 router.post('/eeee', async(req,res, next) =>{
 
   const username = req.body.userId
-  const currentPostsaaa = UserData.find({Username: username}).clone();
+  const currentPostsaaa = await UserData.find({Username: username}).clone();
 
   res.json(currentPostsaaa)
 
