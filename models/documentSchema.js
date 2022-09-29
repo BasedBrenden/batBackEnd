@@ -23,7 +23,11 @@ const PokemonSchema = new Schema({
     pokeImage: {type: String},
     pokeName: {type: String},
     pokeAbility: [AbilitySchema],
-    pokeTypes: [PokemonTypeSchema]
+    pokeAbilityEffect: {type: String},
+    pokeAbility2: {type: String},
+    pokeAbilityEffect2: {type: String},
+    pokeType: {type: String},
+    pokeType2: {type: String},
 })
 
 const UserSettingsSchema = new Schema({
