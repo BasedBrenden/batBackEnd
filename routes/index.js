@@ -17,14 +17,11 @@ router.get('/', async(req,res, next) =>{
 
 
 router.post('/getTeam', async(req,res, next) =>{
-
   const username = req.body.userId
   const currentPostsaaa = await UserData.find({Username: username}, (err, data)=>{
     if(err) {return console.error(err)}
   }).clone();
-
   res.json(currentPostsaaa)
-
 })
 
 
@@ -47,43 +44,24 @@ router.post('/addPoke', async (req,res, next)=>{
   const newPokemonInfo ={
     pokeID: req.body.pokeID,
     pokeImage: req.body.pokeImage,
-    pokeName: req.body.pokeName
+    pokeName: req.body.pokeName,
+    pokeAbility: req.body.pokeAbility,
+    pokeTypes: req.body.pokeTypes
   }
-
   UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Team: newPokemonInfo}}, (err, data)=>{
     if(err) {return console.error(err)}
   })
   res.send();
-
 })
 
 /* Post: delete specific pokemon from team
 */
 
 router.post('/deletePoke', (req,res)=>{
-
   UserData.findOneAndUpdate({Username: req.body.Username}, {$pull:{ Team:{pokeID:req.body.id}}}, (err, removedIndex)=>{
     if(err)return console.log(err);
-
   })
-
-  /*UserData.findById("631fb302c065ac636b9c5f95", (err, data)=>{
-    if(err) {return console.error(err)}
-
-
-  
-    //remove from data, then save updated version to mongoDB
-    //data.pull({Team:{pokeID: req.body}})
-    data.save((err, updateD)=>{
-      if(err) console.error(err)
-    })
-
-    
-  })
-  */
   res.send();
-  
-
 })
 
 module.exports = router;
