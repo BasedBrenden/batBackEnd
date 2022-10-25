@@ -29,6 +29,8 @@ router.post('/getTeam', async(req,res, next) =>{
 router.post("/sign-up", (req,res,next)=>{
   const user = new UserData({
     Username: req.body.username1,
+    trainerName: req.body.trainerName,
+    trainerID: req.body.trainerID
   }).save(err=>{
     if(err){
       return next(err);

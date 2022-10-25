@@ -41,6 +41,8 @@ const AccountInfo = new Schema({
 
 const UserSchema = new Schema({
     Username: {type: String},
+    trainerName: {type: String},
+    trainerID: {type: String},
     Team: [PokemonSchema],
     Settings: [UserSettingsSchema]
 })
