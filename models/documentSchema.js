@@ -28,6 +28,10 @@ const PokemonSchema = new Schema({
     pokeAbilityEffect2: {type: String},
     pokeType: {type: String},
     pokeType2: {type: String},
+    pokeTypeCompare: {
+        adv: [{type:String}],
+        weak: [{type:String}]
+    }
 })
 
 const UserSettingsSchema = new Schema({
