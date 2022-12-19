@@ -18,10 +18,10 @@ router.get('/', async(req,res, next) =>{
 
 router.post('/getTeam', async(req,res, next) =>{
   const username = req.body.userId
-  const currentPostsaaa = await UserData.find({Username: username}, (err, data)=>{
+  const currentTeam = await UserData.find({Username: username}, (err, data)=>{
     if(err) {return console.error(err)}
   }).clone();
-  res.json(currentPostsaaa)
+  res.json(currentTeam)
 })
 
 
@@ -46,6 +46,7 @@ router.post('/addPoke', async (req,res, next)=>{
   const newPokemonInfo ={
     pokeID: req.body.pokeID,
     pokeImage: req.body.pokeImage,
+    pokeImageAnim: req.body.pokeImageAnim,
     pokeName: req.body.pokeName,
     pokeAbility: req.body.pokeAbility,
     pokeAbilityEffect: req.body.pokeAbilityEffect,

@@ -21,6 +21,7 @@ const AbilitySchema = new Schema({
 const PokemonSchema = new Schema({
     pokeID: {type: Number},
     pokeImage: {type: String},
+    pokeImageAnim: {type: String},
     pokeName: {type: String},
     pokeAbility: {type: String},
     pokeAbilityEffect: {type: String},
