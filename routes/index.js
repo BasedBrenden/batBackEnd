@@ -54,6 +54,10 @@ router.post('/addPoke', async (req,res, next)=>{
     pokeAbilityEffect2: req.body.pokeAbilityEffect2,
     pokeType: req.body.pokeType,
     pokeType2: req.body.pokeType2,
+    pokeTypeCompare:{
+        adv: req.body.pokeTypeCompare.adv,
+        weak: req.body.pokeTypeCompare.weak
+    }
   }
   UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Team: newPokemonInfo}}, (err, data)=>{
     if(err) {return console.error(err)}
