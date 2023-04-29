@@ -24,6 +24,14 @@ router.post('/getTeam', async(req,res, next) =>{
   res.json(currentTeam)
 })
 
+route.post('/saveTeam', async(req,res, next) =>{
+  UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Teams: req.body.team}}, (err, data)=>{
+    if(err) {return console.error(err)}
+  })
+  res.json(currentTeams)
+})
+
+
 
 /* Post user sign-up/account creation*/
 router.post("/sign-up", (req,res,next)=>{

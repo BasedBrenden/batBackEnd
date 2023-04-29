@@ -35,6 +35,11 @@ const PokemonSchema = new Schema({
     }
 })
 
+const TeamsSchema = new Schema({
+    TeamName: {type: String},
+    Team: [PokemonSchema]
+})
+
 const UserSettingsSchema = new Schema({
     DarkMode: {type: Boolean}
 })
@@ -48,7 +53,7 @@ const UserSchema = new Schema({
     Username: {type: String},
     trainerName: {type: String},
     trainerID: {type: String},
-    Team: [PokemonSchema],
+    Teams: [TeamsSchema],
     Settings: [UserSettingsSchema]
 })
 
