@@ -22,7 +22,7 @@ router.post('/getTeam', async(req,res, next) =>{
   res.json(currentTeam)
 })
 
-route.post('/saveTeam', async(req,res, next) =>{
+router.post('/saveTeam', async(req,res, next) =>{
   UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Teams: req.body.team}}, (err, data)=>{
     if(err) {return console.error(err)}
   })
