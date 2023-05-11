@@ -36,7 +36,12 @@ router.post("/sign-up", (req,res,next)=>{
   const user = new UserData({
     Username: req.body.username1,
     trainerName: req.body.trainerName,
-    trainerID: req.body.trainerID
+    trainerID: req.body.trainerID,
+    Teams: {
+      Team1: [],
+      Team2: [],
+      Team3: []
+    },
   }).save(err=>{
     if(err){
       return next(err);
@@ -65,9 +70,21 @@ router.post('/addPoke', async (req,res, next)=>{
         weak: req.body.pokeTypeCompare.weak
     }
   }
-  UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Team: newPokemonInfo}}, (err, data)=>{
-    if(err) {return console.error(err)}
-  })
+
+  if(req.body.team === "Team 1"){
+    UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Teams: {Team1: newPokemonInfo}}}, (err, data)=>{
+      if(err) {return console.error(err)}
+    })
+  }else if(req.body.team === "Team 2"){
+    UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Teams: {Team2: newPokemonInfo}}}, (err, data)=>{
+      if(err) {return console.error(err)}
+    })
+  }else{
+    UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Teams: {Team3: newPokemonInfo}}}, (err, data)=>{
+      if(err) {return console.error(err)}
+    })
+  }
+  
   res.send();
 })
 
