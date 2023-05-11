@@ -53,7 +53,7 @@ router.post("/sign-up", (req,res,next)=>{
 
 /* Post a new pokemon into the roster*/
 
-router.post('/addPoke', async (req,res, next)=>{
+router.post('/addPoke', (req,res, next)=>{
   const newPokemonInfo ={
     pokeID: req.body.pokeID,
     pokeImage: req.body.pokeImage,
@@ -77,7 +77,7 @@ router.post('/addPoke', async (req,res, next)=>{
     } else if (!data) {
       res.status(404).send("Document not found");
     } else {
-      res.send();
+      res.send("Document updated successfully");
     }
       
     })
@@ -87,7 +87,7 @@ router.post('/addPoke', async (req,res, next)=>{
     } else if (!data) {
       res.status(404).send("Document not found");
     } else {
-      res.send();
+      res.send("Document updated successfully");
     }
       
     })
@@ -97,7 +97,7 @@ router.post('/addPoke', async (req,res, next)=>{
     } else if (!data) {
       res.status(404).send("Document not found");
     } else {
-      res.send();
+      res.send("  Document updated successfully");
     }
       
     })
