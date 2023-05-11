@@ -110,10 +110,38 @@ router.post('/addPoke', (req,res, next)=>{
 */
 
 router.post('/deletePoke', (req,res)=>{
-  UserData.findOneAndUpdate({Username: req.body.Username}, {$pull:{ Team:{pokeID:req.body.id}}}, (err, removedIndex)=>{
-    if(err)return console.log(err);
-  })
-  res.send();
+	
+	if(req.body.team == "Team 1"){
+    UserData.findOneAndUpdate({Username: req.body.Username}, {$pull:{ Team1: {pokeID:req.body.id}}}, {new:true}, (err, data)=>{
+      if(err) {res.status(500).send("Error updating document");
+    } else if (!data) {
+      res.status(404).send("Document not found");
+    } else {
+      res.send("Document updated successfully");
+    }
+      
+    })
+  }else if(req.body.team == "Team 2"){
+    UserData.findOneAndUpdate({Username: req.body.Username}, {$pull:{ Team2: {pokeID:req.body.id}}}, {new:true}, (err, data)=>{
+      if(err) {res.status(500).send("Error updating document");
+    } else if (!data) {
+      res.status(404).send("Document not found");
+    } else {
+      res.send("Document updated successfully");
+    }
+      
+    })
+  }else{
+		UserData.findOneAndUpdate({Username: req.body.Username}, {$pull:{ Team3: {pokeID:req.body.id}}}, {new:true}, (err, data)=>{
+      if(err) {res.status(500).send("Error updating document");
+    } else if (!data) {
+      res.status(404).send("Document not found");
+    } else {
+      res.send("Document updated successfully");
+    }
+      
+    })
+	}
 })
 
 module.exports = router;
