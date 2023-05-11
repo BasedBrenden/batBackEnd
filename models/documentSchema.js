@@ -1,22 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-/*
-*   -AbilitySchema
-*   -TypesSchema
-*
-*xmod
-*
-*/
-
-const PokemonTypeSchema = new Schema({
-    name: {type: String},
-
-})
-
-const AbilitySchema = new Schema({
-    name: {type: String},
-    effect: {type: String}
-})
 
 const PokemonSchema = new Schema({
     pokeID: {type: Number},
@@ -35,27 +18,19 @@ const PokemonSchema = new Schema({
     }
 })
 
-const TeamsSchema = new Schema({
-    Team1: [PokemonSchema],
-    Team2: [PokemonSchema],
-    Team3: [PokemonSchema]
-})
 
 const UserSettingsSchema = new Schema({
     DarkMode: {type: Boolean}
 })
 
-const AccountInfo = new Schema({
-    Username: {type: String},
-    Password: {type: String}
-})
 
 const UserSchema = new Schema({
     Username: {type: String},
     trainerName: {type: String},
     trainerID: {type: String},
-    Teams: [TeamsSchema],
     Team1: [PokemonSchema],
+    Team2: [PokemonSchema],
+    Team3: [PokemonSchema],
     Settings: [UserSettingsSchema]
 })
 
