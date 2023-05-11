@@ -103,7 +103,7 @@ router.post('/addPoke', (req,res, next)=>{
     })
   }
   
-  res.send();
+  
 })
 
 /* Post: delete specific pokemon from team
