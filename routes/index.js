@@ -82,7 +82,7 @@ router.post('/addPoke', (req,res, next)=>{
       
     })
   }else if(req.body.team == "Team 2"){
-    UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Teams: {Team2: newPokemonInfo}}}, {new:true}, (err, data)=>{
+    UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{Team2: newPokemonInfo}}, {new:true}, (err, data)=>{
       if(err) {res.status(500).send("Error updating document");
     } else if (!data) {
       res.status(404).send("Document not found");
@@ -92,7 +92,7 @@ router.post('/addPoke', (req,res, next)=>{
       
     })
   }else{
-    UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Teams: {Team3: newPokemonInfo}}}, {new:true} , (err, data)=>{
+    UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{Team3: newPokemonInfo}}, {new:true} , (err, data)=>{
       if(err) {res.status(500).send("Error updating document");
     } else if (!data) {
       res.status(404).send("Document not found");
