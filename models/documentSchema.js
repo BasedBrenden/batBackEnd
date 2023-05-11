@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 *   -AbilitySchema
 *   -TypesSchema
 *
-*x
+*xmod
 *
 */
 
@@ -36,8 +36,9 @@ const PokemonSchema = new Schema({
 })
 
 const TeamsSchema = new Schema({
-    TeamName: {type: String},
-    Team: [PokemonSchema]
+    Team1: [PokemonSchema],
+    Team2: [PokemonSchema],
+    Team3: [PokemonSchema]
 })
 
 const UserSettingsSchema = new Schema({
