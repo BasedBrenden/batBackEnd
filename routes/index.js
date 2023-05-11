@@ -81,7 +81,7 @@ router.post('/addPoke', (req,res, next)=>{
     }
       
     })
-  }else if(req.body.team === "Team 2"){
+  }else if(req.body.team == "Team 2"){
     UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Teams: {Team2: newPokemonInfo}}}, {new:true}, (err, data)=>{
       if(err) {res.status(500).send("Error updating document");
     } else if (!data) {
