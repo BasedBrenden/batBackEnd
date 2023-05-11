@@ -97,7 +97,7 @@ router.post('/addPoke', (req,res, next)=>{
     } else if (!data) {
       res.status(404).send("Document not found");
     } else {
-      res.send("  Document updated successfully");
+      res.send("  cgfgd");
     }
       
     })
