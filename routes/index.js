@@ -72,7 +72,7 @@ router.post('/addPoke', async (req,res, next)=>{
   }
 
   if(req.body.team === "Team 1"){
-    UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Team1: {newPokemonInfo}}}, (err, data)=>{
+    UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Team1: newPokemonInfo}}, (err, data)=>{
       if(err) {return console.error(err)}
     })
   }else if(req.body.team === "Team 2"){
