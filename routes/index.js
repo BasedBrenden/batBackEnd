@@ -72,17 +72,17 @@ router.post('/addPoke', async (req,res, next)=>{
   }
 
   if(req.body.team === "Team 1"){
-    UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Team1: newPokemonInfo}}, (err, data)=>{
+    UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Team1: newPokemonInfo}}, {new:true}, (err, data)=>{
       if(err) {return console.error(err)}
       data.save();
     })
   }else if(req.body.team === "Team 2"){
-    UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Teams: {Team2: newPokemonInfo}}}, (err, data)=>{
+    UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Teams: {Team2: newPokemonInfo}}}, {new:true}, (err, data)=>{
       if(err) {return console.error(err)}
       data.save();
     })
   }else{
-    UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Teams: {Team3: newPokemonInfo}}}, (err, data)=>{
+    UserData.findOneAndUpdate({Username: req.body.Username}, {$push:{ Teams: {Team3: newPokemonInfo}}}, {new:true} , (err, data)=>{
       if(err) {return console.error(err)}
       data.save();
     })
