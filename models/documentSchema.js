@@ -55,6 +55,7 @@ const UserSchema = new Schema({
     trainerName: {type: String},
     trainerID: {type: String},
     Teams: [TeamsSchema],
+    Team1: [PokemonSchema],
     Settings: [UserSettingsSchema]
 })
 
