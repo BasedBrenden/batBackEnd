@@ -37,11 +37,10 @@ router.post("/sign-up", (req,res,next)=>{
     Username: req.body.username1,
     trainerName: req.body.trainerName,
     trainerID: req.body.trainerID,
-    Teams: {
-      Team1: [],
-      Team2: [],
-      Team3: []
-    },
+    Team1: [],
+    Team2: [],
+    Team3: [],
+    Settings: [],
   }).save(err=>{
     if(err){
       return next(err);
